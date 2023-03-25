@@ -22,7 +22,7 @@ const Job = ({ title, company, jobtype, maxApplicants, description, skillsets, s
             <div><p>{company}</p></div>
             <div><p>{jobtype}</p></div>
             <div><p>$ {salary}</p></div>
-            <div><p>{description}</p></div>
+            <div><p className={styles.desc}>{description}</p></div>
         </div>
     </div>
   )

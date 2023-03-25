@@ -1,0 +1,74 @@
+.addjob_container{
+display: flex;
+flex-direction: row;
+}
+
+.left_container{
+        background-color: #f0faf0;
+        height: 100vh;
+        width: 45vw;
+}
+
+.right_container{
+    width: 55vw;
+}
+
+.form_header h1{
+font-size: 1.8vw;
+margin-bottom: -0.5vw;
+}
+
+.form_header p{
+    font-size: .8vw;
+    margin-bottom: 2vw;
+    }
+
+.tips_pane{
+    font-size: 0.9vw;
+    font-weight: 600;
+    color: #4e5659;
+    text-align: left;
+    background-color: #caf2ca;
+    width: 78%;
+    margin: auto;
+    border-radius: 18px;
+    padding: 0.5% 2%;
+}
+    
+
+input{
+    width: 60%;
+    height: 3vh;
+    margin-bottom: 1.6vh;
+}
+
+.submit_btn{
+    color: #fff;
+    padding: 0.7vw;
+    background: #277f6a none;
+    border: 1px solid #d8dbdc;
+    border-radius: 2.3em;
+    width: 30%;
+    font-weight: 600;
+    font-size: 15px;
+    margin-top: 2%;
+    margin-right: 5%;
+    cursor: pointer;
+}
+
+.inner_container{
+    margin-top: 15%;
+}
+
+.womanbg{
+    width: 60%;
+    margin-bottom: -0.7%;
+}
+
+.tips_img{
+    width: 5%;
+}
+
+.tips_pane p{
+    line-height: 150%;
+}

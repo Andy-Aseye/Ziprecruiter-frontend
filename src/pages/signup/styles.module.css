@@ -10,7 +10,7 @@
 .form_header h1{
     font-family: 'Poppins', sans-serif;
     font-weight: 600;
-    font-size: 2.4vw;
+    font-size: 2vw;
     margin-bottom: -1vh;
 }
 
@@ -31,12 +31,12 @@
 }
 
 .form_container{
-    width: 60%;
+    width: 80%;
     margin: auto;
 }
 
 .right_container{
-width: 45vw;
+width: 50vw;
 }
 
 .form_group{

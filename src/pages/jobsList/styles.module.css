@@ -16,7 +16,7 @@
     display: flex;
     flex-direction: row;
     margin-bottom: 1.5vh;
-    margin-top: 2vh;
+    margin-top: 2.8vh;
 }
 
 .bottom_bar{
@@ -50,9 +50,9 @@ select{
 }
 
 .filter_pane{
-    box-shadow: 0 -1px 1px rgba(0,0,0,.05), 0 3px 6px rgba(0,0,0,.1);
+    box-shadow: 0 3px 6px rgba(0,0,0,.1);
     padding-bottom: 2vh;
-    padding-left: 3vw;
+    padding-left: 3.5vw;
 }
 
 .search_results{
@@ -67,4 +67,16 @@ select{
 
 .results_header{
     margin-left: 4vw;
+}
+
+.main_container{
+    display: flex;
+    flex-direction: row;
+}
+
+.info_div{
+    margin-top: 8%;
+    border: 1px solid #d8dbdc;
+    border-radius: 1em;
+    margin-left: 2vw;
 }

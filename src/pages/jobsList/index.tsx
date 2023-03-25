@@ -95,6 +95,7 @@ const Jobslist = () => {
     return (
         <div className={styles.container}>
             <FilterDiv />
+            <div className={styles.main_container}>
             <div className={styles.search_results}>
                 <div className={styles.results_header}>
                 <h1>Frontend Developer Jobs</h1>
@@ -103,6 +104,27 @@ const Jobslist = () => {
                 <div className={styles.results_body}>
                 {jobs.map((jobpost) => { return <Job title={jobpost.title} maxApplicants={jobpost.maxApplicants} jobtype={jobpost.jobtype} description={jobpost.description} skillsets={jobpost.skillsets} company={jobpost.company} salary={jobpost.salary} /> })}
                 </div>
+            </div>
+            <div className={styles.info_div}>
+            <div className={styles.pay_range}>
+                <h3>How Much Do Developer Jobs Pay per Year?</h3>
+                <div className={styles.chart}>
+
+                </div>
+            </div>
+            <div className={styles.search_info}>
+                <p>What are the most commonly searched types of Developer jobs?</p>
+                <p>The most popular types of Frontend Developer jobs are:</p>
+                <ol>
+                    <li>Freelance</li>
+                    <li>Senior</li>
+                    <li>Part Time</li>
+                    <li>Associate</li>
+                    <li>Entry Level</li>
+                </ol>
+                <line></line>
+            </div>
+            </div>
             </div>
         </div>
     )

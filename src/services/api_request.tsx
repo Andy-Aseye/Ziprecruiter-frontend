@@ -10,18 +10,27 @@ type ApiResponse = {
     body,
     get,
     options,
+    headers,
   }: {
     baseUrl?: string;
     url: string;
     body?: Record<string, unknown>;
     get?: boolean;
     options?: Record<string, unknown>;
+    headers?: Record<string, unknown>;
   }): Promise<ApiResponse> {
     try {
       // Default options are marked with *
-      const base = baseUrl || "localhost:8080";
+      const base = baseUrl || "http://localhost:8080";
       let config: Record<string, any> = {};
-      config["headers"] = { "Content-Type": "application/json" };
+
+      // allow us to pass custom headers
+      if (headers) {
+        config["headers"] = { ...config.headers, ...headers };
+      } else {
+        config["headers"] = { "Content-Type": "application/json" };
+      }
+
       config["method"] = get ? "GET" : "POST";
       // var credentials = btoa(
       //   process.env.REACT_APP_BASE_AUTH_USERNAME +
@@ -31,7 +40,7 @@ type ApiResponse = {
   
       config["headers"] = { ...config.headers, ...options } || config.headers;
       if (body) config["body"] = JSON.stringify(body);
-  
+      console.log(body, config)
       const response = await fetch(base + "/" + url, config);
       const isJson = response.headers
         .get("content-type")

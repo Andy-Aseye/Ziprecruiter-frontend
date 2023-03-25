@@ -2,8 +2,14 @@ import React, { useState } from 'react';
 import styles from "./styles.module.css";
 import Leftdiv from '../../components/Left-div-signup';
 import apiRequest from '../../services/api_request';
+import { useDispatch } from 'react-redux';
+import { setToken, setEmail, setUserType } from "../../features/auth/authSlice";
+import { Navigate } from 'react-router-dom';
+
 
 const Signup = () => {
+
+  const dispatch = useDispatch();
 
     const [formData, setFormData] = useState({
         type: "applicant",
@@ -34,15 +40,56 @@ const Signup = () => {
       }));
     }
     
-
+    function handleFileChange(event: React.ChangeEvent<HTMLInputElement>) {
+      const { name, files } = event.target;
+      if (files) {
+        setFormData(prevState => ({
+          ...prevState,
+          [name]: files[0],
+        }));
+      }
+    }
 
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
       e.preventDefault()
       if (formData) {
         try {
-            const response = await apiRequest({url: "signup", body: formData});
-            console.log(response)
+            // spin up a promise request to send both the resume and formdata
+            console.log(formData);
+            await Promise.all([
+              apiRequest({url: "auth/signup", body: formData}),
+              // send the request to the documents upload endpoint
+              apiRequest({url: "upload/resume", headers: {
+                "Content-Type": `multipart/form-data`
+              }, body: {
+                file: formData.resume
+              }})
+            
+            ]).then((values) => {
+              console.log(values)
+              const [signupResponse, resumeResponse] = values;
+
+              const {email, token, type} = signupResponse.data as {email: string; token: string; type: string};
+              const {url} = resumeResponse.data as {url: string};
+              
+
+              console.log(url, email, token, type);
+              <Navigate to="/jobslist"/>
+              
+            })
+             
+            
+
+            // const response = await apiRequest({url: "auth/signup", body: formData});
+            // console.log(response.data)
+            // const {email, token, type} = response.data as {email: string; token: string; type: string}
+          
+            // dispatch(setToken(token));
+            // dispatch(setEmail(email));
+            // dispatch(setUserType(type));
+
+
         } catch(err) {
           console.log(err)
         }
@@ -95,7 +142,7 @@ const Signup = () => {
                     </div>
                     <div className={styles.form_group}>
                       <label>Position:</label>
-                      <input name="position" placeholder='Current position' value={formData.position} onChange={handleChange}></input>
+                      <input name="position" placeholder='Current position' onChange={handleChange}></input>
                     </div>
                     <div className={styles.form_group}>
                       <label>Contact Number:</label>
@@ -105,7 +152,7 @@ const Signup = () => {
                     {formData.type === "applicant" ? <>
                     <div className={styles.form_group}>
                       <label>Profile:</label>
-                      <input name="profile" type='file' placeholder='Profile' value={formData.profile} onChange={handleChange}></input>
+                      <input name="profile" type='file' placeholder='Profile' onChange={handleFileChange}></input>
                     </div>
                     <div className={styles.form_group}>
                       <label>Education:</label>
@@ -121,7 +168,7 @@ const Signup = () => {
                     </div>
                     <div className={styles.form_group}>
                       <label>Resume:</label>
-                      <input type='file' name='resume' value={formData.resume} onChange={handleChange}></input>
+                      <input type='file' name='resume' onChange={handleFileChange}></input>
                     </div>
                     </> : null}
                     {}
