@@ -1,13 +1,15 @@
 import React from 'react';
 import styles from "./styles.module.css";
 import Logo from "../../assets/ziprecuiter.png";
-import { useSelector, } from 'react-redux';
+// import { useSelector, } from 'react-redux';
 import {Link} from "react-router-dom";
+import { useAppSelector } from '../../store';
 
 const Navbar = () => {
   
   // @ts-ignore
-  // const user = useSelector(state => state.user);
+  const user = useAppSelector(state => state.auth.user);
+  console.log({user})
 
   return (
     <div className={styles.nav_container}>
@@ -15,7 +17,7 @@ const Navbar = () => {
         <img src={Logo} alt='' className={styles.logo_img}/>
       </div>
       <div className={styles.nav_links}>
-        {/* {user.type ? (
+        {user?.type ? (
           user.type === "recruiter"? (
             <>
             <Link to="/home"><div>Home</div></Link>
@@ -25,13 +27,13 @@ const Navbar = () => {
             <Link to="/logout"><div>Logout</div></Link>
            </>
           ) : (<>
-           <Link to=""><div>Home</div></Link>
-          <Link to=""><div>My Applications</div></Link>
+           <Link to="/home"><div>Home</div></Link>
+          <Link to="/myapplications"><div>My Applications</div></Link>
         <Link to=""><div>Profile</div></Link>
           <Link to=""><div>Logout</div></Link>
           </>)
         ) : ( "") 
-        } */}
+        }
       </div>
     </div>
   )
