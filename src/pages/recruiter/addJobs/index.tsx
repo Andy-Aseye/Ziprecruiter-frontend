@@ -27,22 +27,22 @@ const Addjob = () => {
                 <div className={styles.form_body}>
                 <form>
                 <div className={styles.form_group}>
-                <input type="text" name="title" placeholder='Title' />
+                <input type="text" name="title" placeholder='Title' className={styles.job_input}/>
                 </div>
                 <div className={styles.form_group}>
-                <input type="text" name="skills" placeholder='Skills' />
+                <input type="text" name="skills" placeholder='Skills' className={styles.job_input}/>
                 </div>
                 <div className={styles.form_group}>
-                <input type="text" name="description" placeholder='Job description'/>
+                <input type="text" name="description" placeholder='Job description' className={styles.job_input}/>
                 </div>
                 <div className={styles.form_group}>
-                <input type="text" name="jobType" placeholder='Job Type'/>
+                <input type="text" name="jobType" placeholder='Job Type' className={styles.job_input}/>
                 </div>
                 <div className={styles.form_group}>
-                <input type="number" name="Salary" placeholder='Salary'/>
+                <input type="number" name="Salary" placeholder='Salary' className={styles.job_input}/>
                 </div>
                 <div className={styles.form_group}>
-                <input type="text" name="deadline" placeholder='Appicant Deadline'/>
+                <input type="text" name="deadline" placeholder='Appicant Deadline' className={styles.job_input}/>
                 </div>
                 <div className={styles.form_group}>
                 <input type="number" name="title" placeholder='Maximum number of applicants'/>

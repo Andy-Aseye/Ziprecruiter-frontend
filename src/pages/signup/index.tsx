@@ -3,8 +3,9 @@ import styles from "./styles.module.css";
 import Leftdiv from '../../components/Left-div-signup';
 import apiRequest from '../../services/api_request';
 import { useDispatch } from 'react-redux';
-import { setToken, setEmail, setUserType } from "../../features/auth/authSlice";
+import { setUser } from "../../features/userSlice";
 import { Navigate } from 'react-router-dom';
+import Axios from 'axios';
 
 
 const Signup = () => {
@@ -16,8 +17,8 @@ const Signup = () => {
         email: "",
         password: "",
         name: "",
-        education: [],
-        skills: [],
+        education: "",
+        skills: "",
         resume: "",
         profile: "",
         organization: "",
@@ -31,6 +32,8 @@ const Signup = () => {
     const [error, setError] = useState({
 
     });
+
+    
 
     function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
       const { name, value } = event.target;
@@ -53,18 +56,26 @@ const Signup = () => {
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
       e.preventDefault()
+      const file = new FormData();
+      file.append("file", formData.resume);
+      console.log(`This is data ${file}`);
       if (formData) {
         try {
+          
             // spin up a promise request to send both the resume and formdata
             console.log(formData);
             await Promise.all([
               apiRequest({url: "auth/signup", body: formData}),
               // send the request to the documents upload endpoint
-              apiRequest({url: "upload/resume", headers: {
-                "Content-Type": `multipart/form-data`
-              }, body: {
-                file: formData.resume
-              }})
+              // apiRequest({url: "upload/resume", headers: {
+              //   "Content-Type": "multipart/form-data;"
+              // }, body: {
+              //   file: data
+              // }})
+              Axios.post("http://localhost:8080/upload/resume", file, {
+                headers: {
+                  "Content-Type": "multipart/form-data",
+                }}),
             
             ]).then((values) => {
               console.log(values)
@@ -81,17 +92,17 @@ const Signup = () => {
              
             
 
-            // const response = await apiRequest({url: "auth/signup", body: formData});
-            // console.log(response.data)
+            const response = await apiRequest({url: "auth/signup", body: formData});
+            console.log(response.data)
             // const {email, token, type} = response.data as {email: string; token: string; type: string}
           
-            // dispatch(setToken(token));
-            // dispatch(setEmail(email));
-            // dispatch(setUserType(type));
+            dispatch(setUser(response.data as any));
+           
 
 
-        } catch(err) {
+        } catch(err: any) {
           console.log(err)
+          setError(err);
         }
       }
     }
@@ -156,18 +167,18 @@ const Signup = () => {
                     </div>
                     <div className={styles.form_group}>
                       <label>Education:</label>
-                      <input name="education" placeholder="Education" value={formData.education} onChange={handleChange}></input>
+                      <input type="number" name="education" placeholder="Year of Graduation" value={formData.education} onChange={handleChange}></input>
                     </div>
                     <div className={styles.form_group}>
                       <label>Skills:</label>
-                      <input name="skills" placeholder="Skills" value={formData.skills} onChange={handleChange}></input>
+                      <input name="skills" placeholder="Primary skill" value={formData.skills} onChange={handleChange}></input>
                     </div>
                     <div className={styles.form_group}>
                       {/* <label>Years of Experience:</label> */}
                       <input placeholder="How many years of experience in your field?" name='yearsOfExperience'  type='number' value={formData.yearsOfExperience} onChange={handleChange}></input>
                     </div>
                     <div className={styles.form_group}>
-                      <label>Resume:</label>
+                      <label className={styles.file_label}>Resume: (.pdf files only)</label>
                       <input type='file' name='resume' onChange={handleFileChange}></input>
                     </div>
                     </> : null}

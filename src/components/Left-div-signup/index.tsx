@@ -13,7 +13,7 @@ const Leftdiv = () => {
         </div>
         <div className={styles.tips_pane}>
             
-        <p> <img src={Bulb} className={styles.tips_img} alt="tips-bulb"/> Tips: User experience is modified according to account type. This is to enhance your experience</p>
+        <p> <img src={Bulb} className={styles.tips_img} alt="tips-bulb"/> Tips: User experience is modified according to account type. This is to enhance experience.</p>
         </div>
     </div>
 </div>

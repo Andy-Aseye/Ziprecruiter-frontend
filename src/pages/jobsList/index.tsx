@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import styles from "./styles.module.css";
 import Job from '../Job';
 import jobs from '../../components/trialApi';
+import SearchIcon from "../../assets/search.png";
 
 
 const FilterDiv = () => {

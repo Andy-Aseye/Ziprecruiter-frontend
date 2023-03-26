@@ -9,6 +9,7 @@ import Login from "./pages/login";
 import Signup from './pages/signup';
 import Jobslist from './pages/jobsList';
 import Addjob from './pages/recruiter/addJobs';
+import Myjobs from './pages/recruiter/myJobs';
 
 
 function App() {
@@ -35,6 +36,7 @@ const user = useSelector((state) => state.user);
               <Route path="/cart" element={<></>} />
               <Route path='/jobslist' element={<Jobslist />} />
               <Route path="/addjob" element={<Addjob />}/>
+              <Route path="/myjobs" element={<Myjobs />}/>
             </>
           )
         }

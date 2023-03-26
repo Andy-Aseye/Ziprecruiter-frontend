@@ -36,19 +36,19 @@ const Login = () => {
         <div className={styles.right_container}>
             <div className={styles.form_container}>
                 <div className={styles.form_header}>
-                  <h1>Welcome Back!</h1>
+                  <h1>Welcome Back</h1>
                   <p>Sign into your account and let's get started!</p>
                 </div>
                 <div className={styles.form_body}>
                   <form onSubmit={handleSubmit}>
                   <div className={styles.form_group}>
-                      <label>Email:</label>
-                      <input name="email" value={formData.email} onChange={handleChange}></input>
+                      <input name="email" value={formData.email} onChange={handleChange}
+                      placeholder='Email'></input>
                     </div>
                     <div className={styles.form_group}>
-                      <label>Password:</label>
-                      <input name="password" value={formData.password} onChange={handleChange}></input>
+                      <input name="password" value={formData.password} placeholder='Password' onChange={handleChange}></input>
                     </div>
+                    <button className={styles.signin_btn}>Sign In</button>
                   </form>
                 </div>
             </div>

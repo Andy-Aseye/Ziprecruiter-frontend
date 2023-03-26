@@ -1,11 +1,11 @@
-import { configureStore } from '@reduxjs/toolkit';
-import userReducer from "./features/auth/authSlice";
+import { configureStore } from "@reduxjs/toolkit";
+import {persistStore} from "redux-persist";
+import rootReducer from "./features/rootReducer";
 
-const store = configureStore({
-  reducer: {
-    user: userReducer,
-    // ... other reducers
-  },
-});
 
-export default store;
+export const store = configureStore({
+  reducer: rootReducer,
+})
+
+export const persitor = persistStore(store);
+// export default store;

@@ -3,6 +3,7 @@
             height: 100vh;
             width: 50vw;
             padding-top: 15%;
+            overflow-y: hidden;
     }
     
     .tips_pane{
