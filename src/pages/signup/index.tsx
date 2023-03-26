@@ -64,7 +64,7 @@ const Signup = () => {
           
             // spin up a promise request to send both the resume and formdata
             console.log(formData);
-            await Promise.all([
+            const values = await Promise.all([
               apiRequest({url: "auth/signup", body: formData}),
               // send the request to the documents upload endpoint
               // apiRequest({url: "upload/resume", headers: {
@@ -77,26 +77,27 @@ const Signup = () => {
                   "Content-Type": "multipart/form-data",
                 }}),
             
-            ]).then((values) => {
-              console.log(values)
-              const [signupResponse, resumeResponse] = values;
+            ])
 
-              const {email, token, type} = signupResponse.data as {email: string; token: string; type: string};
-              const {url} = resumeResponse.data as {url: string};
+            console.log(values)
+            const [signupResponse, resumeResponse] = values;
+
+            const {email, token, type} = signupResponse.data as {email: string; token: string; type: string};
+            const {url} = resumeResponse.data as {url: string};
+            
+
+            console.log(url, email, token, type);
+            <Navigate to="/jobslist"/>
               
 
-              console.log(url, email, token, type);
-              <Navigate to="/jobslist"/>
-              
-            })
              
             
 
-            const response = await apiRequest({url: "auth/signup", body: formData});
-            console.log(response.data)
+            // const response = await apiRequest({url: "auth/signup", body: formData});
+            // console.log(response.data)
             // const {email, token, type} = response.data as {email: string; token: string; type: string}
           
-            dispatch(setUser(response.data as any));
+            // dispatch(setUser(response.data as any));
            
 
 
