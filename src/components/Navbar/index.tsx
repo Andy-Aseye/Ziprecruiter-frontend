@@ -7,7 +7,7 @@ import {Link} from "react-router-dom";
 const Navbar = () => {
   
   // @ts-ignore
-  const user = useSelector(state => state.user);
+  // const user = useSelector(state => state.user);
 
   return (
     <div className={styles.nav_container}>
@@ -15,7 +15,7 @@ const Navbar = () => {
         <img src={Logo} alt='' className={styles.logo_img}/>
       </div>
       <div className={styles.nav_links}>
-        {user.type ? (
+        {/* {user.type ? (
           user.type === "recruiter"? (
             <>
             <Link to="/home"><div>Home</div></Link>
@@ -31,7 +31,7 @@ const Navbar = () => {
           <Link to=""><div>Logout</div></Link>
           </>)
         ) : ( "") 
-        }
+        } */}
       </div>
     </div>
   )

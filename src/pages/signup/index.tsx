@@ -4,13 +4,16 @@ import Leftdiv from '../../components/Left-div-signup';
 import apiRequest from '../../services/api_request';
 import { useDispatch } from 'react-redux';
 import { setUser } from "../../features/userSlice";
-import { Navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Axios from 'axios';
+import { useAppDispatch, useAppSelector } from '../../store';
 
 
 const Signup = () => {
-
-  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const dispatch = useAppDispatch();
+  const token = useAppSelector(state => state.auth.user?.token);
+  console.log({token})
 
     const [formData, setFormData] = useState({
         type: "applicant",
@@ -87,7 +90,8 @@ const Signup = () => {
             
 
             console.log(url, email, token, type);
-            <Navigate to="/jobslist"/>
+            dispatch(setUser({ email, token, type }));
+            navigate('/jobslist');
               
 
              
