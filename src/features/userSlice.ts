@@ -2,9 +2,9 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 
 interface User {
-  email: string;
-  token: string;
-  type: string;
+  email: string|null;
+  token: string|null;
+  type: string|null;
 }
 
 interface UserState {
@@ -12,7 +12,11 @@ interface UserState {
 }
 
 const initialState: UserState = {
-  user: null,
+  user: {
+    email: localStorage.getItem('email') ?? null,
+    token: localStorage.getItem('token') ?? null,
+    type: localStorage.getItem('type') ?? null
+  },
 };
 
 const userSlice = createSlice({

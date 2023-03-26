@@ -90,6 +90,9 @@ const Signup = () => {
             
 
             console.log(url, email, token, type);
+            localStorage.setItem('email', email);
+            localStorage.setItem('token', token);
+            localStorage.setItem('type', type);
             dispatch(setUser({ email, token, type }));
             navigate('/jobslist');
               
