@@ -4,6 +4,7 @@ import styles from "./styles.module.css";
 import Job from '../Job';
 import jobs from '../../components/trialApi';
 import SearchIcon from "../../assets/search.png";
+import Chart from "../../assets/zipchart-bg-.png";
 
 
 const FilterDiv = () => {
@@ -110,7 +111,7 @@ const Jobslist = () => {
             <div className={styles.pay_range}>
                 <h3>How Much Do Developer Jobs Pay per Year?</h3>
                 <div className={styles.chart}>
-
+                <img src={Chart} alt='chart-img' className={styles.chart_img}/>
                 </div>
             </div>
             <div className={styles.search_info}>

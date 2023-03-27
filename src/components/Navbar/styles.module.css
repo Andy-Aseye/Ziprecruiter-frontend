@@ -1,7 +1,7 @@
 .nav_container{
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     /* border: 2px red solid; */
 }
 
@@ -11,6 +11,24 @@
     float: left;
     margin-left: 6%;
     margin-top: 2%;
-    
 }
 
+.nav_links{
+    width: 70%;
+}
+
+
+.nav_list{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 50%;
+    margin-left: 35%;
+}
+
+a {
+    text-decoration: none;
+    color: #72777c;
+    font-weight: 600;
+
+}

@@ -19,19 +19,19 @@ const Navbar = () => {
       <div className={styles.nav_links}>
         {user?.type ? (
           user.type === "recruiter"? (
-            <>
+            <div className={styles.nav_list}>
             <Link to="/home"><div>Home</div></Link>
              <Link to="/addjob"><div>Post a Job</div></Link>
              <Link to="/myjobs"><div>My Jobs</div></Link>
             <Link to="/profile"><div>Profile</div></Link>
             <Link to="/logout"><div>Logout</div></Link>
-           </>
-          ) : (<>
+           </div>
+          ) : (<div className={styles.nav_list}>
            <Link to="/home"><div>Home</div></Link>
           <Link to="/myapplications"><div>My Applications</div></Link>
         <Link to=""><div>Profile</div></Link>
           <Link to=""><div>Logout</div></Link>
-          </>)
+          </div>)
         ) : ( "") 
         }
       </div>

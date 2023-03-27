@@ -80,5 +80,10 @@ select{
     margin-top: 8%;
     border: 1px solid #d8dbdc;
     border-radius: 1em;
+    width: 20%;
     margin-left: 2vw;
+}
+
+.chart_img{
+    width: 60%;
 }
