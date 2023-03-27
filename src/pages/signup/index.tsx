@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styles from "./styles.module.css";
 import Leftdiv from '../../components/Left-div-signup';
 import apiRequest from '../../services/api_request';
-import { useDispatch } from 'react-redux';
+// import { useDispatch } from 'react-redux';
 import { setUser } from "../../features/userSlice";
 import { useNavigate } from 'react-router-dom';
 import Axios from 'axios';
@@ -12,8 +12,8 @@ import { useAppDispatch, useAppSelector } from '../../store';
 const Signup = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
-  const token = useAppSelector(state => state.auth.user?.token);
-  console.log({token})
+  // const token = useAppSelector(state => state.auth.user?.token);
+  // console.log({token})
 
     const [formData, setFormData] = useState({
         type: "applicant",
