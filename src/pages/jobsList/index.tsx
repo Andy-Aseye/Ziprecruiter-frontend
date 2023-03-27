@@ -116,7 +116,7 @@ const Jobslist = () => {
             </div>
             <div className={styles.search_info}>
                 <p>What are the most commonly searched types of Developer jobs?</p>
-                <p>The most popular types of Frontend Developer jobs are:</p>
+                <p className={styles.sub_header}>The most popular types of Frontend Developer jobs are:</p>
                 <ol>
                     <li>Freelance</li>
                     <li>Senior</li>
@@ -124,7 +124,6 @@ const Jobslist = () => {
                     <li>Associate</li>
                     <li>Entry Level</li>
                 </ol>
-                <line></line>
             </div>
             </div>
             </div>

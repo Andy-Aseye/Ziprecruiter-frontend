@@ -78,7 +78,7 @@ select{
 
 .info_div{
     margin-top: 8%;
-    border: 1px solid #d8dbdc;
+    /* border: 1px solid #d8dbdc; */
     border-radius: 1em;
     width: 20%;
     margin-left: 2vw;
@@ -86,4 +86,27 @@ select{
 
 .chart_img{
     width: 60%;
+}
+
+.pay_range{
+    border: 1px solid #d8dbdc;
+    border-radius: 1em;
+    margin-bottom: 3vh;
+}
+
+.search_info{
+    text-align: left;
+    border: 1px solid #d8dbdc;
+    border-radius: 1em;
+    padding: 5%;
+
+}
+
+.sub_header{
+    font-size: 0.8vw;
+}
+
+ol{
+    line-height: 170%;
+    font-size: 0.9vw;
 }
