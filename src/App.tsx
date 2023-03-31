@@ -33,7 +33,7 @@ const App = () => {
         <>
           <Route path="/jobslist" element={<Jobslist />} />
           <Route path="/myapplications" element={<Myapplications />} />
-          <Route path="api/jobs/:id" element={<Viewjob />} />
+          <Route path="/jobslist/api/jobs/:id" element={<Viewjob />} />
         </>
         {/* )} */}
         {/* {user && user.type === "recruiter" && ( */}

@@ -13,7 +13,7 @@ const Navbar = () => {
   
   // @ts-ignore
   const user = useAppSelector(state => state.auth.user);
-  console.log({user});
+  // console.log({user});
 
   const handleLogout: MouseEventHandler<HTMLDivElement> = (event) => {
       localStorage.removeItem("token");

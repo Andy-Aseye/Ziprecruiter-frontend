@@ -7,20 +7,20 @@ import { useAppSelector } from '../../store';
 import apiRequest from '../../services/api_request';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
+import { axiosInstance } from '../../services/axioshelper';
 
 
 const Viewjob = () => {
 
   const {id} = useParams(); 
   const [selectedJobb, setselectedJobb] = useState<any>(); 
-  console.log(id);
 
   // const response = apiRequest({url: ``})
 
   useEffect(() => { 
     const fetchJob = async () => {
       try {
-        const response = await axios.get(`/api/jobs/${id}`);
+        const response = await axiosInstance.get(`/api/jobs/${id}`, { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } });
         setselectedJobb(response.data);
       } catch (error) {
         console.error(error)
