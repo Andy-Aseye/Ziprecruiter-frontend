@@ -49,6 +49,8 @@ const Viewjob = () => {
 
   // const selectedJob = seletedJobb
 
+  console.log(selectedJobb);
+
   const title = selectedJobb?.title || "";
   const organization = selectedJobb?.organization || "";
   const description = selectedJobb?.description || "";

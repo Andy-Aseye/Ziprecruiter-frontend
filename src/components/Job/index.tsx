@@ -19,16 +19,16 @@ interface JobProps {
 
 const Job = ({id, title,  jobType, description, skills, salary }: JobProps) => {
 
-  const dispatch = useAppDispatch();
+  // const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
 
 const handleClick = () => {
-  dispatch(selectedJob({Job}));
-  localStorage.setItem("title", title);
-  localStorage.setItem("salary", salary.toString());
-  // localStorage.setItem("organization", organization);
-  localStorage.setItem("description", description);
+  // dispatch(selectedJob({Job}));
+  // localStorage.setItem("title", title);
+  // localStorage.setItem("salary", salary.toString());
+  // // localStorage.setItem("organization", organization);
+  // localStorage.setItem("description", description);
   navigate(`api/jobs/${id}`);
   console.log(id)
 
