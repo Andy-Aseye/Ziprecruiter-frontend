@@ -54,7 +54,7 @@ const RecruiterSignup = () => {
     }: { setSubmitting: (isSubmitting: boolean) => void; resetForm: () => void }
   ) => {
     try {
-      const response = await apiRequest({ url: "auth/signup", body: value });
+      const response = await apiRequest({ url: "auth/signup/recruiter", body: value });
       console.log(response);
       console.log(response.message);
       const { email, token, type } = response.data as {
