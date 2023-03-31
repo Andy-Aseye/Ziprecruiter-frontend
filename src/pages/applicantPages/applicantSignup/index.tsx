@@ -9,14 +9,16 @@ import { useAppDispatch } from "../../../store";
 import * as Yup from "yup";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { IoIosCloseCircle } from "react-icons/io";
+import { axiosInstance } from "../../../services/axioshelper";
 // import axios from "axios";
 
 interface MyFormValues {
-  type: string | any;
   email?: string | any;
   password?: string | any;
   resume: File | any;
-  coverletter: File | any;
+  education: string | any;
+  yearsOfExperience: string | any;
+  coverLetter: File | any;
   [key: string]: any;
 }
 
@@ -46,79 +48,57 @@ const ApplicantSignup = () => {
     name: "",
     email: "",
     password: "",
-    type: "applicant",
     skills: "",
     resume: null,
-    coverletter: null,
+    coverLetter: null,
+    education: "",
+    yearsOfExperience: "",
   };
 
   const validationShema = Yup.object().shape<MyFormValues>({
     name: Yup.string().required("Name value is required"),
-    type: Yup.string().required("Select role type"),
     email: Yup.string().email("Invalid email").required("Email is required"),
     password: Yup.string()
       .min(6, "Password must be at least 6 characters")
       .required("Password is required"),
     resume: Yup.mixed().required("Resume file is required"),
-    coverletter: Yup.mixed().required("Cover letter file is required"),
+    coverLetter: Yup.mixed().required("Cover letter file is required"),
+    education: Yup.string().required("Education is required"),
+    yearsOfExperience: Yup.number().required("Years of experience is required"),
   });
 
   const onSubmit = async (
-    value: Record<string, unknown>,
+    values: Record<string, unknown>,
     {
       setSubmitting,
       resetForm,
     }: { setSubmitting: (isSubmitting: boolean) => void; resetForm: () => void }
   ) => {
     try {
-      const { resume, coverletter, ...formData } = value;
-      const resumeFormData = new FormData();
-      resumeFormData.append("file", resume as File);
-      // spin up a promise request to send both the resume and formdata
-      const response = await Promise.all([
-        // apiRequest({ url: "auth/signup", body: value }),
-        apiRequest({ url: "auth/signup", body: formData }),
+      console.log(values);
+      const { name, email, password, education, skills, yearsOfExperience, resume, coverLetter } = values;
+      const formData = new FormData();
+      formData.append('name', name as string);
+      formData.append('email', email as string);
+      formData.append('password', password as string);
+      formData.append('education', education as string);
+      formData.append('yearsOfExperience', yearsOfExperience as string);
+      formData.append('skills', JSON.stringify(skills));
+      formData.append('resume', resume as File);
+      formData.append('coverLetter', coverLetter as File);
 
-        // apiRequest({
-        //   url: "upload/resume",
-        //   headers: {
-        //     "Content-Type": "multipart/form-data;",
-        //   },
-        //   body: resumeFormData,
-        // }),
-        apiRequest({
-          url: "upload/cover-letter",
-          headers: {
-            "Content-Type": "multipart/form-data;",
-          },
-          body: {
-            file: coverletter,
-          },
-        }),
+      const { data: { token, type } } = await axiosInstance.post<{email: string, token: string, type: string}>('/auth/signup/applicant', formData, { headers: { 'Content-Type': 'multipart/form-data' } })
+      // const { email, token, type } = signupResponse.data as {
+      //   email: string;
+      //   token: string;
+      //   type: string;
+      // };
 
-        Axios.post("http://localhost:8080/upload/resume", resumeFormData, {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        }),
-      ]);
-
-      console.log(response);
-      const [signupResponse, resumeResponse] = response;
-
-      const { email, token, type } = signupResponse.data as {
-        email: string;
-        token: string;
-        type: string;
-      };
-      const { url } = resumeResponse.data as { url: string };
-
-      console.log(url, email, token, type);
-      localStorage.setItem("email", email);
+      localStorage.setItem("email", email as string);
       localStorage.setItem("token", token);
       localStorage.setItem("type", type);
-      dispatch(setUser({ email, token, type }));
-      // navigate("/jobslist");
+      dispatch(setUser({ email: String(email), token, type }));
+      navigate("/jobslist");
     } catch (error) {
     } finally {
       setSubmitting(false);
@@ -162,16 +142,20 @@ const ApplicantSignup = () => {
                       </div>
                     </div>
                     <div className={styles.form_group}>
-                      <label htmlFor="type">User type</label>
-                      <Field as="select" id="type" name="type">
-                        <option value="">-- Select role type --</option>
-                        <option value="recruiter">Recruiter</option>
-                        <option value="applicant">Applicant</option>
-                      </Field>
+                      <label htmlFor="education">Education</label>
+                      <Field type="text" id="education" name="education" />
                       <div className={styles.validate_err}>
-                        <ErrorMessage name="type" />
+                        <ErrorMessage name="education" />
                       </div>
                     </div>
+                    <div className={styles.form_group}>
+                      <label htmlFor="yearsOfExperience">Years of experience</label>
+                      <Field type="number" id="yearsOfExperience" name="yearsOfExperience" />
+                      <div className={styles.validate_err}>
+                        <ErrorMessage name="yearsOfExperience" />
+                      </div>
+                    </div>
+
                     <div className={styles.form_group}>
                       <label htmlFor="email">Email</label>
                       <Field type="text" id="email" name="email" />
@@ -263,20 +247,20 @@ const ApplicantSignup = () => {
                       </div>
                     </div>
                     <div className={styles.form_group}>
-                      <label htmlFor="coverletter">Cover letter:</label>
+                      <label htmlFor="coverLetter">Cover letter:</label>
                       <input
-                        id="coverletter"
-                        name="coverletter"
+                        id="coverLetter"
+                        name="coverLetter"
                         type="file"
                         onChange={(event) =>
                           formik.setFieldValue(
-                            "coverletter",
+                            "coverLetter",
                             event.currentTarget.files?.[0]
                           )
                         }
                       />
                       <div className={styles.validate_err}>
-                        <ErrorMessage name="coverletter" />
+                        <ErrorMessage name="coverLetter" />
                       </div>
                     </div>
                     <button
