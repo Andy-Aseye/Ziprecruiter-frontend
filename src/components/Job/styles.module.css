@@ -34,3 +34,11 @@
     font-size: 0.8vw;
     color: #2f3639;
 }
+
+.skills_list{
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    font-size: 0.6vw;
+    font-weight: 700;
+}
