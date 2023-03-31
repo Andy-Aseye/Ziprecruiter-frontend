@@ -9,7 +9,8 @@ import Jobslist from "./pages/applicantPages/jobsList";
 import Addjob from "./pages/recruiter/addJobs";
 import Myjobs from "./pages/recruiter/myJobs";
 import { useAppSelector } from "./store";
-import Viewjob from "./pages/applicantPages/viewJob/index";
+// import Viewjob from "./pages/applicantPages/viewJob/index";
+import Viewjob from "./pages/viewJob";
 import Myapplications from "./pages/applicantPages/appliedJobs";
 import RecruiterSignup from "./pages/recruiter/recruiterSignup";
 
@@ -32,7 +33,7 @@ const App = () => {
         <>
           <Route path="/jobslist" element={<Jobslist />} />
           <Route path="/myapplications" element={<Myapplications />} />
-          <Route path="/job/:id" element={<Viewjob />} />
+          <Route path="api/jobs/:id" element={<Viewjob />} />
         </>
         {/* )} */}
         {/* {user && user.type === "recruiter" && ( */}

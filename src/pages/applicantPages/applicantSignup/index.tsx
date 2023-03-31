@@ -96,15 +96,11 @@ const ApplicantSignup = () => {
           },
         }),
 
-        Axios.post(
-          "http://localhost:8080/upload/resume",
-          resumeFormData,
-          {
-            headers: {
-              "Content-Type": "multipart/form-data",
-            },
-          }
-        ),
+        Axios.post("http://localhost:8080/upload/resume", resumeFormData, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }),
       ]);
 
       console.log(response);
