@@ -1,0 +1,50 @@
+.job_container{
+text-align: left;
+margin-bottom: 3%;
+border-radius: 7px;
+width: 40%;
+box-shadow: 2px 2px 8px rgba(64, 64, 64, 0.2);
+padding: 2% 0% 5% 4%;
+}
+
+.actions{
+    display: flex;
+    flex-direction: row;
+    width: 75%;
+    justify-content: space-between;
+}
+
+button{
+    color: white;
+    border-radius: 9px;
+    border: none;
+    padding: 5% 10%;
+    width: 117px;
+    cursor: pointer;
+}
+
+.view{
+    background-color: rgb(102, 102, 223);
+}
+
+.edit{
+    background: #277f6a none;;
+}
+.delete{
+    background: rgb(237, 54, 54);
+}
+
+.skills_list{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 4%;
+    gap: 12px;
+}
+
+.skill_tab{
+    background-color: rgb(59, 58, 58);
+    color: white;
+    font-size: 10px;
+    border-radius: 10px;
+    padding: 10px;
+}

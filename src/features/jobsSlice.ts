@@ -1,18 +1,37 @@
-import {createSlice, PayloadAction} from "@reduxjs/toolkit"
+import {createSlice} from "@reduxjs/toolkit";
 
-interface JobsState {
-    jobs: any;
+
+interface Job {
+    title: string| null;
+    organization: string| null;
+    description: string| null;
+    salary: string|number| null;
+
 }
 
-const jobsfinalState: JobsState = {
-    jobs: 0,
-};
+interface JobState {
+    job: Job | null;
+}
+
+const initialState: JobState = {
+    job: {
+        title: localStorage.getItem("title") ?? "",
+        organization: localStorage.getItem("organization") ?? "",
+        description: localStorage.getItem("description") ?? "",
+        salary: localStorage.getItem("salary") ?? 0,
+    }
+}
+
+const jobSlice = createSlice({
+    name: "job",
+    initialState,
+    reducers: {
+        selectedJob: (state, action) => {
+            state.job = action.payload;
+        },
+    },
+});
 
 
-// const jobsSlice = createSlice({
-//     name: 'jobs',
-//     initialState,
-//     reducers: {
-//         in
-//     }
-// })
+export const {selectedJob} = jobSlice.actions;
+export default jobSlice.reducer;

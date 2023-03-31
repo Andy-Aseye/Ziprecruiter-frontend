@@ -1,15 +1,29 @@
-import React from 'react';
+import React, {useEffect, MouseEventHandler} from 'react';
 import styles from "./styles.module.css";
 import Logo from "../../assets/ziprecuiter.png";
 // import { useSelector, } from 'react-redux';
 import {Link} from "react-router-dom";
-import { useAppSelector } from '../../store';
+import { useNavigate } from 'react-router-dom';
+import { useAppSelector, useAppDispatch } from '../../store';
+import { clearUser } from '../../features/userSlice';
 
 const Navbar = () => {
+  const navigate = useNavigate();
+  const dispatch = useAppDispatch();
   
   // @ts-ignore
   const user = useAppSelector(state => state.auth.user);
-  console.log({user})
+  console.log({user});
+
+  const handleLogout: MouseEventHandler<HTMLDivElement> = (event) => {
+      localStorage.removeItem("token");
+      localStorage.removeItem("type");
+      localStorage.removeItem("email");
+      console.log(localStorage.length)
+      dispatch(clearUser());
+      navigate("/signup");
+
+  }
 
   return (
     <div className={styles.nav_container}>
@@ -28,9 +42,10 @@ const Navbar = () => {
            </div>
           ) : (<div className={styles.nav_list}>
            <Link to="/home"><div>Home</div></Link>
+           <Link to="/jobslist"><div>Jobs</div></Link>
           <Link to="/myapplications"><div>My Applications</div></Link>
         <Link to=""><div>Profile</div></Link>
-          <Link to=""><div>Logout</div></Link>
+          <div onClick={handleLogout} className={styles.logout_btn}>Logout</div>
           </div>)
         ) : ( "") 
         }

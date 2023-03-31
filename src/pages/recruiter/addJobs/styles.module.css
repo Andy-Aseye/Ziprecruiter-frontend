@@ -9,6 +9,11 @@ flex-direction: row;
         width: 45vw;
 }
 
+.form_container{
+    width: 60%;
+    margin: auto;
+}
+
 .right_container{
     width: 55vw;
 }
@@ -63,6 +68,7 @@ margin-bottom: -0.5vw;
 .womanbg{
     width: 60%;
     margin-bottom: -0.7%;
+    margin-left: 20%;
 }
 
 .tips_img{
@@ -71,4 +77,17 @@ margin-bottom: -0.5vw;
 
 .tips_pane p{
     line-height: 150%;
+}
+
+.validate_err{
+    font-size: 0.6vw;
+    color: red;
+    margin-bottom: 1%;
+    text-align: left;
+}
+
+.form_grp{
+    display: flex;
+    flex-direction: column;
+    /* margin-left: 25%; */
 }

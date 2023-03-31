@@ -2,6 +2,7 @@ type ApiResponse = {
     status: boolean;
     message: string;
     data?: unknown;
+    ok?: boolean;
   };
   
   async function apiRequest({
@@ -11,13 +12,15 @@ type ApiResponse = {
     get,
     options,
     headers,
-  }: {
+    queryParams,
+    }: {
     baseUrl?: string;
     url: string;
     body?: Record<string, unknown>;
     get?: boolean;
     options?: Record<string, unknown>;
     headers?: Record<string, unknown>;
+    queryParams?: string;
   }): Promise<ApiResponse> {
     try {
       // Default options are marked with *

@@ -12,6 +12,8 @@
     font-weight: 600;
     font-size: 2vw;
     margin-bottom: -1vh;
+    margin-left: 10%;
+    
 }
 
 .form_header p {
@@ -26,7 +28,7 @@
 
 .form_body{
     /* border: 3px red solid; */
-    padding-left: 15%;
+    /* padding-left: 15%; */
     width: 80%;
 }
 
@@ -48,6 +50,7 @@ width: 50vw;
 .form_group{
     display: flex;
     flex-direction: column;
+    /* margin-left: 10%; */
     /* width: 100%; */
 }
 
@@ -80,12 +83,31 @@ label {
     width: 30%;
     font-weight: 600;
     font-size: 15px;
-    margin-top: 2%;
-    margin-right: 5%;
-
+    margin-left: 15%;
+    
 }
 
 .btn_submit:hover {
 cursor: pointer;
 }
 
+.validate_err{
+    font-size: 0.6vw;
+    color: red;
+    margin-bottom: 1%;
+    text-align: left;
+}
+
+.submit_btn{
+    color: #fff;
+    padding: 0.7vw;
+    background: #277f6a none;
+    border: 1px solid #d8dbdc;
+    border-radius: 2.3em;
+    width: 30%;
+    font-weight: 600;
+    font-size: 15px;
+    margin-top: 2%;
+    margin-right: 5%;
+    cursor: pointer;
+}

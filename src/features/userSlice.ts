@@ -15,7 +15,7 @@ const initialState: UserState = {
   user: {
     email: localStorage.getItem('email') ?? null,
     token: localStorage.getItem('token') ?? null,
-    type: localStorage.getItem('type') ?? null
+    type: localStorage.getItem('type') ?? null,
   },
 };
 
@@ -27,7 +27,7 @@ const userSlice = createSlice({
       state.user = action.payload;
     },
     clearUser: (state) => {
-      state.user = null;
+      state = initialState;
     },
   },
 });
