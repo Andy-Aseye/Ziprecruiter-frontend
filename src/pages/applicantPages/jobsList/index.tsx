@@ -7,13 +7,36 @@ import SearchIcon from "../../assets/search.png";
 import Chart from "../../../assets/zipchart-bg-.png"
 import apiRequest from '../../../services/api_request';
 import axios from 'axios';
+import { useAppDispatch, useAppSelector } from '../../../store';
 
 
-const FilterDiv = () => {
+
+// const FilterDiv = () => {
+
+//     const dispatch = useAppDispatch();
+
+    
+
+
+
+
+//   return (
+   
+//   )
+// }
+
+const Jobslist = () => {
+    // interface JobProps {
+    //     title: any;
+    //     maxApplicants: number;
+    //     description: string;
+    //     skillsets: string[];
+    //     salary: number;
+    //   }
 
     // Reminder: Implement exporting of interface. 
     interface Job {
-        id: number;
+        _id: string;
         title: string;
         skills: string[];
         description: string;
@@ -79,11 +102,10 @@ const FilterDiv = () => {
         // dispatch action to update state with search results
       }
 
-
-
-
-  return (
-    <div className={styles.filter_pane}>
+    // const {joblist} = useAppSelector();
+    return (
+        <div className={styles.container}>
+             <div className={styles.filter_pane}>
         <div className={styles.inner_container}>
             <div className={styles.top_bar}>
                 <div className={styles.search_job}>
@@ -139,21 +161,7 @@ const FilterDiv = () => {
                 </div>
             </div>
         </div>
-    </div>
-  )
-}
-
-const Jobslist = () => {
-    // interface JobProps {
-    //     title: any;
-    //     maxApplicants: number;
-    //     description: string;
-    //     skillsets: string[];
-    //     salary: number;
-    //   }
-    return (
-        <div className={styles.container}>
-            <FilterDiv />
+     </div>
             <div className={styles.main_container}>
             <div className={styles.search_results}>
                 <div className={styles.results_header}>
@@ -161,7 +169,7 @@ const Jobslist = () => {
                 <p>Jobs within 500 miles of Accra, GH</p>
                 </div>
                 <div className={styles.results_body}>
-                {jobs.map((jobpost) => { return <Job title={jobpost.title} maxApplicants={jobpost.maxApplicants} jobtype={jobpost.jobtype} description={jobpost.description} skillsets={jobpost.skillsets} organization={jobpost.organization} salary={jobpost.salary} /> })}
+                {jobslist.map((jobpost) => { return <Job id={jobpost._id} title={jobpost.title} description={jobpost.description} jobType={jobpost.jobType} skills={jobpost.skills} salary={jobpost.salary} /> })}
                 </div>
             </div>
             <div className={styles.info_div}>
@@ -189,3 +197,8 @@ const Jobslist = () => {
 }
 
 export default Jobslist;
+
+
+
+
+// maxApplicants={jobpost.maxApplicants} jobType={jobpost.jobType} organization={jobpost.organization}

@@ -6,16 +6,18 @@ import { useNavigate } from 'react-router-dom';
 
 
 interface JobProps {
+  id: string;
   title: string;
-  organization: string;
-  jobtype: string;
-  maxApplicants: number;
+  jobType: string;
   description: string;
-  skillsets: string[];
+  skills: string[];
   salary: number | string;
 }
+// organization,
+// organization: string;
+  // maxApplicants: number;
 
-const Job = ({ title, organization, jobtype, maxApplicants, description, skillsets, salary }: JobProps) => {
+const Job = ({id, title,  jobType, description, skills, salary }: JobProps) => {
 
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
@@ -25,9 +27,10 @@ const handleClick = () => {
   dispatch(selectedJob({Job}));
   localStorage.setItem("title", title);
   localStorage.setItem("salary", salary.toString());
-  localStorage.setItem("organization", organization);
+  // localStorage.setItem("organization", organization);
   localStorage.setItem("description", description);
-  navigate('/job/:id');
+  navigate(`api/jobs/${id}`);
+  console.log(id)
 
 }
 
@@ -40,9 +43,10 @@ const handleClick = () => {
         </div>
         <div className={styles.job_body_panel}>
             <div><h3>{title}</h3></div>
-            <div><p>{organization}</p></div>
-            <div><p>{jobtype}</p></div>
+            {/* <div><p>{organization}</p></div> */}
+            <div><p>{jobType}</p></div>
             <div><p>{salary}</p></div>
+            <div>{skills}</div>
             <div><p className={styles.desc}>{description}</p></div>
         </div>
     </div>

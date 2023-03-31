@@ -3,11 +3,13 @@ import { useSelector } from "react-redux";
 import { TypedUseSelectorHook, useDispatch } from "react-redux";
 import userSlice from "./features/userSlice";
 import jobSlice from "./features/jobsSlice";
+import jobsListSlice  from "./features/jobsListsSlice";
 
 export const store = configureStore({
   reducer: {
     auth: userSlice,
     job: jobSlice,
+    joblist: jobsListSlice,
   }
 })
 

@@ -132,9 +132,6 @@ const Myjobs = (): JSX.Element => {
 
   console.log(jobslist);
 
-  // if (!jobslist || jobslist.length === 0) {
-  //   return <div className={styles.nojob_msg}><h1>No job found</h1> <p>Get started by <Link to="/addjob" className={styles.link}>adding jobs</Link></p></div>;
-  // }
   if (!jobslist || jobslist.length === 0) {
     return <div className={styles.nojob_msg}><h1>No job found</h1><p>Get started by <Link to="/addjob" className={styles.link}>adding jobs</Link></p></div>;
   } else {

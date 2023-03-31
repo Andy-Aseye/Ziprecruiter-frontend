@@ -66,7 +66,7 @@ const RecruiterSignup = () => {
       localStorage.setItem("token", token);
       localStorage.setItem("type", type);
       dispatch(setUser({ email, token, type }));
-    //   navigate("/myjobs");
+      navigate("/myjobs");
       if (!response || !response.ok) {
         throw new Error("Failed to register user");
       }
