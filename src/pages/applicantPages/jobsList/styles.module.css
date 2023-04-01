@@ -86,7 +86,8 @@ select{
 }
 
 .chart_img{
-    width: 60%;
+    width: 63%;
+    margin-left: 4%;
 }
 
 .pay_range{

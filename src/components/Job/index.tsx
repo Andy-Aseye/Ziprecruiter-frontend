@@ -45,7 +45,7 @@ const handleClick = () => {
             <div><h3>{title}</h3></div>
             {/* <div><p>{organization}</p></div> */}
             <div><p>{jobType}</p></div>
-            <div><p>{salary}</p></div>
+            <div><p>$ {salary}</p></div>
             <div className={styles.skills_list}>{skills.map((skill) => {return (<div className={styles.skill_tab} key={skill}>{skill}</div>)})}</div>
             <div><p className={styles.desc}>{description}</p></div>
         </div>

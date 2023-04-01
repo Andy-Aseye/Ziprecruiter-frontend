@@ -13,6 +13,7 @@ import { useAppSelector } from "./store";
 import Viewjob from "./pages/viewJob";
 import Myapplications from "./pages/applicantPages/appliedJobs";
 import RecruiterSignup from "./pages/recruiter/recruiterSignup";
+import JobApplications from "./pages/recruiter/JobApplications";
 
 const App = () => {
   const user = useAppSelector((state) => state.auth.user);
@@ -39,6 +40,7 @@ const App = () => {
         {/* {user && user.type === "recruiter" && ( */}
         <>
           <Route path="/addjob" element={<Addjob />} />
+          <Route path="jobslist/api/jobs/:id/applications" element={<JobApplications />} />
           <Route path="/myjobs" element={<Myjobs />} />
         </>
         {/* )} */}

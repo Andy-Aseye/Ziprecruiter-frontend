@@ -2,7 +2,7 @@ import React, {useEffect, MouseEventHandler} from 'react';
 import styles from "./styles.module.css";
 import Logo from "../../assets/ziprecuiter.png";
 // import { useSelector, } from 'react-redux';
-import {Link} from "react-router-dom";
+import {Link, redirect} from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
 import { useAppSelector, useAppDispatch } from '../../store';
 import { clearUser } from '../../features/userSlice';
@@ -21,7 +21,8 @@ const Navbar = () => {
       localStorage.removeItem("email");
       console.log(localStorage.length)
       dispatch(clearUser());
-      navigate("/signup");
+      // navigate("/signup");
+      redirect("/applicant-signup")
 
   }
 
