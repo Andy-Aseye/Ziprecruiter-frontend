@@ -14,6 +14,7 @@ import Viewjob from "./pages/viewJob";
 import Myapplications from "./pages/applicantPages/appliedJobs";
 import RecruiterSignup from "./pages/recruiter/recruiterSignup";
 import JobApplications from "./pages/recruiter/JobApplications";
+import Recruiterapplications from "./pages/recruiter/myApplications";
 
 const App = () => {
   const user = useAppSelector((state) => state.auth.user);
@@ -42,6 +43,7 @@ const App = () => {
           <Route path="/addjob" element={<Addjob />} />
           <Route path="jobslist/api/jobs/:id/applications" element={<JobApplications />} />
           <Route path="/myjobs" element={<Myjobs />} />
+          <Route path="/api/jobs/:id/applications" element={< Recruiterapplications/>} />
         </>
         {/* )} */}
         {/* <Route path="*" element={<Home />}/> */}

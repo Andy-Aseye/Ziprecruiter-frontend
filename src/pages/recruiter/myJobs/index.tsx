@@ -11,6 +11,7 @@ interface Job {
   _id: string;
   title: string;
   skills: string[];
+  location: string;
   description: string;
   jobType: string;
   salary: number;
@@ -59,6 +60,7 @@ const Myjobs = (): JSX.Element => {
                     return (
                       <Job
                         id={job._id}
+                        location={job.location}
                         title={job.title}
                         jobtype={job.jobType}
                         salary={job.salary}

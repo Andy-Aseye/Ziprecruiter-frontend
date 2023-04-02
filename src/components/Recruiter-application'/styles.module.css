@@ -1,0 +1,101 @@
+.application_container{
+    box-shadow: 3px 4px 3px 4px rgba(81, 80, 80, 0.1);
+    width: 40vw;
+    padding: 2vw;
+    /* border: 1px black solid; */
+}
+
+.container_main{
+    display: flex;
+    flex-direction: row;
+    gap: 20%;
+}
+
+.view_files{
+    display: flex;
+    flex-direction: row;
+    gap: 4%;
+}
+
+.view_files div{
+    background-color: rgb(128, 149, 145);
+    width: 6vw;
+    padding: 0.3vw 1.8vw;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 0.7vw;
+    height: 2.8vw;
+    color: whitesmoke;
+    cursor: pointer;
+}
+
+
+.update_status_buttons {
+    padding: 2vw;
+    display: flex;
+    flex-direction: row;
+    gap: 2vw;
+}
+
+
+
+.update_status_buttons button {
+    padding: 1vw;
+    /* color: white; */
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.accept{
+background-color: rgb(92, 166, 92);
+}
+
+.shortlist{
+    background-color: rgb(230, 230, 72);
+    color: black;
+}
+
+.reject{
+    background-color: rgb(210, 82, 82);
+}
+
+.skill_list{
+    display: flex;
+    flex-direction: row;
+    gap: 2vw
+}
+
+.skill{
+    padding: 0.6vw;
+    background-color: rgb(56, 54, 55);
+    color: white;
+    border-radius: 12px;
+    font-weight: 600;
+    text-align: center;
+    border: none;
+    width: 5vw;
+}
+
+.applicant_details p{
+    font-weight: 600;
+    color: blue;
+}
+
+.name, .education, .yearsOfExperience{
+    display: flex;
+    gap: 1vw;
+}
+
+.applicant_files{
+    display: flex;
+    flex-direction: row;
+    gap: 1vw;
+}
+
+.applicant_files button {
+    width: 8vw;
+    padding: 0.5vw;
+    height: 3vw;
+    text-align: center;
+    background-color: rgb(56, 54, 55);
+}

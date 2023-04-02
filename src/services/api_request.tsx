@@ -43,7 +43,7 @@ type ApiResponse = {
   
       config["headers"] = { ...config.headers, ...options } || config.headers;
       if (body) config["body"] = JSON.stringify(body);
-      console.log(body, config)
+      // console.log(body, config)
       const response = await fetch(base + "/" + url, config);
       const isJson = response.headers
         .get("content-type")

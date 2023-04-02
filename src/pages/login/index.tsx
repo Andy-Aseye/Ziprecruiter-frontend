@@ -13,13 +13,14 @@ const Login = () => {
   const dispatch = useAppDispatch();
 
   const validationSchema = Yup.object().shape({
+    type: Yup.string().required("Select role type"),
     email: Yup.string().email("Invalid email").required("Email is required"),
     password: Yup.string()
       .min(6, "Passwword must be at least 6 characters")
       .required("Password is required"),
   });
 
-  const initialValues = { email: "", password: "" };
+  const initialValues = { email: "", password: "", type: "" };
 
   const onSubmit = async (
     value: Record<string, unknown>,
@@ -35,7 +36,7 @@ const Login = () => {
         token: string;
         type: string;
       };
-      localStorage.setItem("email", email);
+      // localStorage.setItem("email", email);
       localStorage.setItem("token", token);
       localStorage.setItem("type", type);
       dispatch(setUser({ email, token, type }));
@@ -80,6 +81,14 @@ const Login = () => {
                 {({ isSubmitting }) => (
                   <Form>
                     <div className={styles.form_group}>
+                      <label htmlFor="email">Account type</label>
+                      <Field as="select" id="type" name="type" className="h-10">
+                        <option value="">-- Select account type --</option>
+                        <option value="recruiter">Recruiter</option>
+                        <option value="applicant">Applicant</option>
+                      </Field>
+                    </div>
+                    <div className={styles.form_group}>
                       <label htmlFor="email">Email</label>
                       <Field type="text" id="email" name="email" />
                       <div className={styles.validate_err}>
@@ -93,7 +102,9 @@ const Login = () => {
                         <ErrorMessage name="password" />
                       </div>
                     </div>
-                    <button className={styles.signin_btn}>Sign In</button>
+                    <button className={styles.signin_btn} type="submit">
+                      Sign In
+                    </button>
                   </Form>
                 )}
               </Formik>

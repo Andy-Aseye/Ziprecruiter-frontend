@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router-dom';
 interface JobProps {
   id: string;
   title: string;
+  location: String;
   jobType: string;
   description: string;
   skills: string[];
@@ -17,7 +18,7 @@ interface JobProps {
 // organization: string;
   // maxApplicants: number;
 
-const Job = ({id, title,  jobType, description, skills, salary }: JobProps) => {
+const Job = ({id, location, title,  jobType, description, skills, salary }: JobProps) => {
 
   // const dispatch = useAppDispatch();
   const navigate = useNavigate();

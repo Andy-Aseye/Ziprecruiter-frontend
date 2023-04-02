@@ -39,6 +39,7 @@ const Jobslist = () => {
         _id: string;
         title: string;
         skills: string[];
+        location: String;
         description: string;
         jobType: string;
         salary: number;
@@ -169,7 +170,7 @@ const Jobslist = () => {
                 <p>Jobs within 500 miles of Accra, GH</p>
                 </div>
                 <div className={styles.results_body}>
-                {jobslist.map((jobpost) => { return <Job id={jobpost._id} title={jobpost.title} description={jobpost.description} jobType={jobpost.jobType} skills={jobpost.skills} salary={jobpost.salary} /> })}
+                {jobslist.map((jobpost) => { return <Job location={jobpost.location} id={jobpost._id} title={jobpost.title} description={jobpost.description} jobType={jobpost.jobType} skills={jobpost.skills} salary={jobpost.salary} /> })}
                 </div>
             </div>
             <div className={styles.info_div}>

@@ -1,0 +1,6 @@
+.container_inner{
+    display: flex;
+    flex-direction: column;
+    width: 90vw;
+    margin: auto;
+}

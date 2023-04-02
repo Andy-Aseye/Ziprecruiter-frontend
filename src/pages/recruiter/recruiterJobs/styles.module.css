@@ -48,3 +48,10 @@ button{
     border-radius: 10px;
     padding: 10px;
 }
+
+.validate_err{
+    font-size: 0.6vw;
+    color: red;
+    margin-bottom: 1%;
+    text-align: left;
+}
