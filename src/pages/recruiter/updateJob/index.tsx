@@ -1,17 +1,34 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import * as Yup from "yup";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { axiosInstance } from '../../../services/axioshelper';
 import styles from "./styles.module.css";
 import { IoIosCloseCircle } from "react-icons/io";
+import { useParams } from 'react-router-dom';
+import Leftdiv from '../../../components/Left-div-signup';
 
-interface UpdateJobModalProps {
-    id: string;
-    onClose: () => void;
-    isOpen: boolean;
-  }
+// interface UpdateJobModalProps {
+//     id: string;
+//   } 
+// : React.FC<UpdateJobModalProps>
 
-const UpdateJob: React.FC<UpdateJobModalProps> = ({ id, onClose, isOpen }) => {
+const UpdateJob = () => {
+  const { id } = useParams();
+  const [selectedJobb, setselectedJobb] = useState<any>();
+
+   useEffect(() => {
+    const fetchJob = async () => {
+      try {
+        const response = await axiosInstance.get(`/api/jobs/${id}`, {
+          headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+        });
+        setselectedJobb(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    fetchJob();
+  }, [id]);
 
     const [skill, setSkill] = useState<string>("");
     const [skills, setSkills] = useState<Array<string>>([]);
@@ -34,18 +51,19 @@ const UpdateJob: React.FC<UpdateJobModalProps> = ({ id, onClose, isOpen }) => {
         salary: Yup.string(),
         location: Yup.string(),
         duration: Yup.string(),
+        skills: Yup.array().of(Yup.string()),
         description: Yup.string(),
     });
 
-    
+    console.log(selectedJobb)
   const initialValues = {
-    title: "",
-    skills: [],
-    description: "",
-    jobType: "",
-    duration: 0,
-    location: "",
-    salary: 0,
+    title: selectedJobb?.title || "",
+    skills: selectedJobb?.skils || [],
+    description: selectedJobb?.description || "",
+    jobType: selectedJobb?.jobType || "",
+    duration: selectedJobb?.duration || "",
+    location: selectedJobb?.location || "",
+    salary: selectedJobb?.salary || "",
   };
 
   const onSubmit = async (
@@ -79,13 +97,14 @@ const UpdateJob: React.FC<UpdateJobModalProps> = ({ id, onClose, isOpen }) => {
 
 
   return (
-    <div className={`modal ${isOpen} ? 'is-open': ''`}>
-    <div className="modal-content">
-      <button className="close-button" onClick={onClose}>
-        X
-      </button>
-      <h2>Update Job Details</h2>
-      <Formik
+    <div className={styles.container_inner}>
+      <div className={styles.left_container}>
+        <Leftdiv />
+      </div>
+      <div className={styles.container_right}>
+        <div className={styles.form_container}>
+        <h2>Update Job Details</h2>
+             <Formik
                 initialValues={initialValues}
                 validationSchema={validationSchema}
                 onSubmit={(e, options) => onSubmit({ ...e, skills }, options)}
@@ -201,7 +220,8 @@ const UpdateJob: React.FC<UpdateJobModalProps> = ({ id, onClose, isOpen }) => {
                   </Form>
                 )}
               </Formik>
-    </div>
+        </div>
+      </div>
   </div>
   )
 }

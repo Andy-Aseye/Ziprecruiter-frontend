@@ -1,0 +1,41 @@
+.container_inner{
+    display: flex;
+    flex-direction: row;
+}
+
+.container_right{
+    width: 50vw;
+}
+
+.form_container{
+    width: 30vw;
+    margin: auto;
+}
+
+.form_grp{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1vw;
+}
+
+.form_container h2{
+    font-weight: 700;
+    font-size: 18px;
+    text-align: center;
+    margin: 1.7vw 0vw;
+}
+
+.submit_btn{
+    color: #fff;
+    padding: 0.7vw;
+    background: #277f6a none;
+    border: 1px solid #d8dbdc;
+    border-radius: 2.3em;
+    width: 30%;
+    font-weight: 600;
+    font-size: 15px;
+    margin-top: 2%;
+    margin-left: 30%;
+    cursor: pointer;
+    /* align-self: center; */
+}
