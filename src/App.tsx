@@ -23,7 +23,7 @@ const App = () => {
   const routes = useRoutes([
     {
       path: "/",
-      element: <Home />,
+      element: <Login />,
       caseSensitive: false,
     },
     {
@@ -43,22 +43,22 @@ const App = () => {
     },
     {
       path: "/jobslist",
-      element: user && user.type === "user" ? <Jobslist /> : <Navigate to="/" replace />,
+      element: user && user.type === "applicant" ? <Jobslist /> : <Navigate to="/" replace />,
       caseSensitive: false,
     },
     {
       path: "/myapplications",
-      element: user && user.type === "user" ? <Myapplications /> : <Navigate to="/" replace />,
+      element: user && user.type === "applicant" ? <Myapplications /> : <Navigate to="/" replace />,
       caseSensitive: false,
     },
     {
       path: "/api/jobs/:id/update-job",
-      element: user && user.type === "user" ? <UpdateJob /> : <Navigate to="/" replace />,
+      element: user && user.type === "recruiter" ? <UpdateJob /> : <Navigate to="/" replace />,
       caseSensitive: false,
     },
     {
       path: "/jobslist/api/jobs/:id",
-      element: user && user.type === "user" ? <Viewjob /> : <Navigate to="/" replace />,
+      element: user && user.type === "applicant" ? <Viewjob /> : <Navigate to="/" replace />,
       caseSensitive: false,
     },
     {
