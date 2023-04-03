@@ -165,50 +165,71 @@ const Jobslist = () => {
           </div>
         </div>
       </div>
-      <div className={styles.main_container}>
-        <div className={styles.search_results}>
-          <div className={styles.results_header}>
-            <h1>Frontend Developer Jobs</h1>
-            <p>Jobs within 500 miles of Accra, GH</p>
+
+      {/* {jobslist.length === 0 ? } */}
+      {
+        jobslist.length === 0 ?
+        <>
+          <div className={styles.container_no_job}>
+            <h1>No jobs found</h1>
+            <p>We didn't find any results for <strong>Search title</strong></p>
+            <ul>
+              <li>Please check the spelling of the keywords you entered</li>
+              <li>Try some other keywords or fewer keywords to expand your search</li>
+              <li>Broaden the search radius</li>
+              <li>Try removing any filters</li>
+            </ul>
           </div>
-          <div className={styles.results_body}>
-            {jobslist.map((jobpost) => {
-              return (
-                <Job
-                  location={jobpost.location}
-                  id={jobpost._id}
-                  title={jobpost.title}
-                  description={jobpost.description}
-                  jobType={jobpost.jobType}
-                  skills={jobpost.skills}
-                  salary={jobpost.salary}
-                />
-              );
-            })}
-          </div>
-        </div>
-        <div className={styles.info_div}>
-          <div className={styles.pay_range}>
-            <h3>How Much Do Developer Jobs Pay per Year?</h3>
-            <div className={styles.chart}>
-              <img src={Chart} alt="chart-img" className={styles.chart_img} />
+        </>
+        :
+
+        <div className={styles.main_container}>
+          <div className={styles.search_results}>
+            <div className={styles.results_header}>
+              <h1>Frontend Developer Jobs</h1>
+              <p>Jobs within 500 miles of Accra, GH</p>
+            </div>
+            <div className={styles.results_body}>
+              {jobslist.map((jobpost) => {
+                return (
+                  <Job
+                    location={jobpost.location}
+                    id={jobpost._id}
+                    title={jobpost.title}
+                    description={jobpost.description}
+                    jobType={jobpost.jobType}
+                    skills={jobpost.skills}
+                    salary={jobpost.salary}
+                  />
+                );
+              })}
             </div>
           </div>
-          <div className={styles.search_info}>
-            <p>What are the most commonly searched types of Developer jobs?</p>
-            <p className={styles.sub_header}>
-              The most popular types of Frontend Developer jobs are:
-            </p>
-            <ol>
-              <li>Freelance</li>
-              <li>Senior</li>
-              <li>Part Time</li>
-              <li>Associate</li>
-              <li>Entry Level</li>
-            </ol>
+          <div className={styles.info_div}>
+            <div className={styles.pay_range}>
+              <h3>How Much Do Developer Jobs Pay per Year?</h3>
+              <div className={styles.chart}>
+                <img src={Chart} alt="chart-img" className={styles.chart_img} />
+              </div>
+            </div>
+            <div className={styles.search_info}>
+              <p>What are the most commonly searched types of Developer jobs?</p>
+              <p className={styles.sub_header}>
+                The most popular types of Frontend Developer jobs are:
+              </p>
+              <ol>
+                <li>Freelance</li>
+                <li>Senior</li>
+                <li>Part Time</li>
+                <li>Associate</li>
+                <li>Entry Level</li>
+              </ol>
+            </div>
           </div>
         </div>
-      </div>
+      }
+
+
     </div>
   );
 };

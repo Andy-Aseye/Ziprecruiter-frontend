@@ -118,3 +118,15 @@ ol{
     line-height: 170%;
     font-size: 0.9vw;
 }
+
+.container_no_job{
+    box-shadow: 0 3px 6px rgba(0,0,0,.1);
+    width: 40vw;
+    margin: 4vh 0vh 0vh 5vw;
+    padding: 2vw;
+    border-radius: 12px;
+}
+
+li{
+    line-height: 140%;
+}
