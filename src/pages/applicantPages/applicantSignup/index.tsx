@@ -10,7 +10,7 @@ import * as Yup from "yup";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { IoIosCloseCircle } from "react-icons/io";
 import { axiosInstance } from "../../../services/axioshelper";
-// import axios from "axios";
+
 
 interface MyFormValues {
   email?: string | any;
@@ -23,9 +23,6 @@ interface MyFormValues {
 }
 
 const ApplicantSignup = () => {
-  // const token = useAppSelector(state => state.auth.user?.token);
-  // console.log({token})
-
   const [skill, setSkill] = useState<string>("");
   const [skills, setSkills] = useState<Array<string>>([]);
 
@@ -76,23 +73,35 @@ const ApplicantSignup = () => {
   ) => {
     try {
       console.log(values);
-      const { name, email, password, education, skills, yearsOfExperience, resume, coverLetter } = values;
+      const {
+        name,
+        email,
+        password,
+        education,
+        skills,
+        yearsOfExperience,
+        resume,
+        coverLetter,
+      } = values;
       const formData = new FormData();
-      formData.append('name', name as string);
-      formData.append('email', email as string);
-      formData.append('password', password as string);
-      formData.append('education', education as string);
-      formData.append('yearsOfExperience', yearsOfExperience as string);
-      formData.append('skills', JSON.stringify(skills));
-      formData.append('resume', resume as File);
-      formData.append('coverLetter', coverLetter as File);
+      formData.append("name", name as string);
+      formData.append("email", email as string);
+      formData.append("password", password as string);
+      formData.append("education", education as string);
+      formData.append("yearsOfExperience", yearsOfExperience as string);
+      formData.append("skills", JSON.stringify(skills));
+      formData.append("resume", resume as File);
+      formData.append("coverLetter", coverLetter as File);
 
-      const { data: { token, type } } = await axiosInstance.post<{email: string, token: string, type: string}>('/auth/signup/applicant', formData, { headers: { 'Content-Type': 'multipart/form-data' } })
-      // const { email, token, type } = signupResponse.data as {
-      //   email: string;
-      //   token: string;
-      //   type: string;
-      // };
+      const {
+        data: { token, type },
+      } = await axiosInstance.post<{
+        email: string;
+        token: string;
+        type: string;
+      }>("/auth/signup/applicant", formData, {
+        headers: { "Content-Type": "multipart/form-data" },
+      });
 
       localStorage.setItem("email", email as string);
       localStorage.setItem("token", token);
@@ -104,10 +113,6 @@ const ApplicantSignup = () => {
       setSubmitting(false);
     }
   };
-
-  // const [error, setError] = useState({
-
-  // });
 
   return (
     <div>
@@ -149,8 +154,14 @@ const ApplicantSignup = () => {
                       </div>
                     </div>
                     <div className={styles.form_group}>
-                      <label htmlFor="yearsOfExperience">Years of experience</label>
-                      <Field type="number" id="yearsOfExperience" name="yearsOfExperience" />
+                      <label htmlFor="yearsOfExperience">
+                        Years of experience
+                      </label>
+                      <Field
+                        type="number"
+                        id="yearsOfExperience"
+                        name="yearsOfExperience"
+                      />
                       <div className={styles.validate_err}>
                         <ErrorMessage name="yearsOfExperience" />
                       </div>

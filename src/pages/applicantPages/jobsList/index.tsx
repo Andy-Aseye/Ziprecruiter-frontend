@@ -1,13 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
 import styles from "./styles.module.css";
 import Job from "../../../components/Job";
-import jobs from "../../../components/trialApi";
-import SearchIcon from "../../assets/search.png";
 import Chart from "../../../assets/zipchart-bg-.png";
 import apiRequest from "../../../services/api_request";
 import axios from "axios";
-import { useAppDispatch, useAppSelector } from "../../../store";
 import { axiosInstance } from "../../../services/axioshelper";
 
 const Jobslist = () => {
@@ -23,7 +19,6 @@ const Jobslist = () => {
   }
 
   const [jobslist, setJobslist] = useState<Job[]>([]);
-  const [filteredJobs, setFilteredJobs] = useState<Job[]>([]);
 
   // Initial rendering of jobs on page
   useEffect(() => {
@@ -49,7 +44,6 @@ const Jobslist = () => {
   console.log(jobslist);
 
   // Rendering of jobs
-  // const dispatch = useDispatch();
   const [title, setTitle] = useState("");
   const [location, setLocation] = useState("");
   const [jobType, setJobType] = useState("all");
@@ -58,36 +52,33 @@ const Jobslist = () => {
   const [employmentType, setEmploymentType] = useState("all");
 
   const handleSearch = async () => {
-
     try {
-        const queryParams = new URLSearchParams({
-            title,
-            location,
-            jobType,
-            distance,
-            salary,
-            employmentType,
-          });
-      const response = await axiosInstance.get(`/api/jobs?${queryParams.toString()}`, {
-        headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`
-        },
+      const queryParams = new URLSearchParams({
+        title,
+        location,
+        jobType,
+        distance,
+        salary,
+        employmentType,
       });
+      const response = await axiosInstance.get(
+        `/api/jobs?${queryParams.toString()}`,
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
       if (response.status === 200) {
-        setFilteredJobs(response.data);
-        console.log(filteredJobs);
+        setJobslist(response.data);
       } else {
         console.error("Failed to fetch jobs");
       }
+    } catch (error) {
+      console.error(error);
     }
-
-    catch (error) {
-        console.error(error)
-    }
-    // send queryParams to server using fetch or axios
   };
 
-  // const {joblist} = useAppSelector();
   return (
     <div className={styles.container}>
       <div className={styles.filter_pane}>
@@ -223,5 +214,3 @@ const Jobslist = () => {
 };
 
 export default Jobslist;
-
-// maxApplicants={jobpost.maxApplicants} jobType={jobpost.jobType} organization={jobpost.organization}

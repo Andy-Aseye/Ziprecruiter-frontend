@@ -93,38 +93,3 @@ const App = () => {
 
 export default App;
 
-
-
-// <Routes>
-//         <Route index element={<Home />} />
-//         {/* {!user && ( */}
-//         <>
-//           <Route path="/login" element={<Login />} />
-//           <Route path="/recruiter-signup" element={<RecruiterSignup />} />
-//           <Route path="/applicant-signup" element={<ApplicantSignup />} />
-//         </>
-//         {/* )} */}
-//         {/* {user && user.type === "user" && ( */}
-//         <>
-//           <Route path="/jobslist" element={<Jobslist />} />
-//           <Route path="/myapplications" element={<Myapplications />} />
-//           <Route path="/api/jobs/:id/update-job" element={<UpdateJob />} />
-//           <Route path="/jobslist/api/jobs/:id" element={<Viewjob />} />
-//         </>
-//         {/* )} */}
-//         {/* {user && user.type === "recruiter" && ( */}
-//         <>
-//           <Route path="/addjob" element={<Addjob />} />
-//           <Route
-//             path="jobslist/api/jobs/:id/applications"
-//             element={<JobApplications />}
-//           />
-//           <Route path="/myjobs" element={<Myjobs />} />
-//           <Route
-//             path="/api/jobs/:id/applications"
-//             element={<Recruiterapplications />}
-//           />
-//         </>
-//         {/* )} */}
-//         {/* <Route path="*" element={<Home />}/> */}
-//       </Routes>
