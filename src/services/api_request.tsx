@@ -24,7 +24,7 @@ type ApiResponse = {
   }): Promise<ApiResponse> {
     try {
       // Default options are marked with *
-      const base = baseUrl || "http://localhost:8080";
+      const base = baseUrl || "https://ziprecruiter.onrender.com";
       let config: Record<string, any> = {};
 
       // allow us to pass custom headers

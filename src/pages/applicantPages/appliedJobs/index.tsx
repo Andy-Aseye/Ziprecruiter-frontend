@@ -23,7 +23,7 @@ const Myapplications = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:8080/api/applications-applicant", {
+        const response = await axios.get("https://ziprecruiter.onrender.com/api/applications-applicant", {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },

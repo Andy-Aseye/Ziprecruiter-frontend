@@ -12,11 +12,12 @@ interface UserState {
 }
 
 const initialState: UserState = {
-  user: {
-    email: localStorage.getItem('email') ?? null,
-    token: localStorage.getItem('token') ?? null,
-    type: localStorage.getItem('type') ?? null,
-  },
+  // user: {
+  //   email: localStorage.getItem('email') ?? null,
+  //   token: localStorage.getItem('token') ?? null,
+  //   type: localStorage.getItem('type') ?? null,
+  // },
+  user: null,
 };
 
 const userSlice = createSlice({

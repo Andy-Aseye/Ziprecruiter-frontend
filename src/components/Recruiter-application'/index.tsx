@@ -27,7 +27,7 @@ const Recruiterapp = ({
     const status = statusUpdate;
 
     const response = await axios.put(
-      `http://localhost:8080/api/applications/${id}`,
+      `https://ziprecruiter.onrender.com/api/applications/${id}`,
       { status: status },
       {
         headers: {

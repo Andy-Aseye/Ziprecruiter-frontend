@@ -51,7 +51,7 @@ const Addjob = () => {
   ) => {
     try {
       const response = await axios.post(
-        "http://localhost:8080/api/jobs",
+        "https://ziprecruiter.onrender.com/api/jobs",
         value,
         {
           headers: {

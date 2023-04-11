@@ -67,7 +67,7 @@ const Login = () => {
               <h1>Welcome back</h1>
               <p>
                 Don't have an account?{" "}
-                <Link to="/signup" style={{ color: "blue" }}>
+                <Link to="/applicant-signup" style={{ color: "blue" }}>
                   create account
                 </Link>
               </p>

@@ -24,7 +24,7 @@ const Myjobs = (): JSX.Element => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:8080/api/jobs/recruiter", {
+        const response = await axios.get("https://ziprecruiter.onrender.com/api/jobs/recruiter", {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },

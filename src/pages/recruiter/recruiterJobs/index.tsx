@@ -28,7 +28,7 @@ const RecruiterJob = ({
   const handleDelete = () => {
     console.log(id);
     axios
-      .delete(`http://localhost:8080/api/jobs/${id}`, {
+      .delete(`https://ziprecruiter.onrender.com/api/jobs/${id}`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
